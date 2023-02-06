@@ -41,7 +41,7 @@ const UserProvider = ({ children }) => {
         if (token) {
             try {
               api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-              const { data } = await api.get("/contacts");
+              const { data } = await api.get("/contact");
               setContacts(data)
       
             } catch (error) {
@@ -55,9 +55,7 @@ const UserProvider = ({ children }) => {
         api.post("/contact", data)
         .then((resp) => {
             console.log(resp)
-
-            //setUser(resp.data.user)
-            //setContacts([resp.data.user.contact])
+            setContacts(...contacts, data)
         })
         .catch((err) => {
             console.log(err)

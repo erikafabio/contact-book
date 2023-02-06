@@ -45,7 +45,7 @@
     flex-direction: column;
 }
 
-label{
+.label-form{
     font-size: 1.2rem;
     font-weight: 500;
 }

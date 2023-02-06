@@ -35,7 +35,7 @@ export const Register = () => {
                     Faça seu cadastro
                 </h2>
                 <div className="input-container">
-                    <label htmlFor="name">Nome Completo</label>
+                    <label className="label-form" htmlFor="name">Nome Completo</label>
                     <input 
                         type="text" 
                         name="name" 
@@ -46,7 +46,7 @@ export const Register = () => {
                     />
                     <span>{errors.name?.message}</span>
 
-                    <label htmlFor="email">Email</label>
+                    <label className="label-form" htmlFor="email">Email</label>
                     <input 
                         type="text" 
                         name="email" 
@@ -57,7 +57,7 @@ export const Register = () => {
                     />
                     <span>{errors.email?.message}</span>
 
-                    <label htmlFor="phoneNumber">Telefone</label>
+                    <label className="label-form" htmlFor="phoneNumber">Telefone</label>
                     <input 
                         type="text" 
                         name="phoneNumber" 
@@ -68,7 +68,7 @@ export const Register = () => {
                     />
                     <span>{errors.phoneNumber?.message}</span>
         
-                    <label htmlFor="password">Senha</label>
+                    <label className="label-form" htmlFor="password">Senha</label>
                     <input 
                         type="password"
                         name="password"
