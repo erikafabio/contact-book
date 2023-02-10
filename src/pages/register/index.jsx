@@ -40,7 +40,7 @@ export const Register = () => {
                         type="text" 
                         name="name" 
                         id="name" 
-                        placeholder="Lily Tucker Pritchett"
+                        placeholder="Nome Completo"
                         className="input-value-entry"
                         {...register("name")}
                     />

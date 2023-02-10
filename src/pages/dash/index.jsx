@@ -23,10 +23,10 @@ export const Dashboard = () => {
     return(
         <div className="container-dashboard">
             <header>
-                <h1>Lily Tucker Pritchett</h1>
+                <h1>{user.name}</h1>
                 <div>
-                    <p>lily@vietnan.com.br</p>
-                    <p>9551583801</p>
+                    <p>{user.email}</p>
+                    <p>{user.phoneNumber}</p>
                 </div>
             </header>
             <div className="container-new-contact">
@@ -36,7 +36,7 @@ export const Dashboard = () => {
                         type="text" 
                         name="name" 
                         id="name" 
-                        placeholder="Lily Tucker Pritchett"
+                        placeholder="Nome Completo"
                         className="input-contact"
                         {...register("name")}
                     />

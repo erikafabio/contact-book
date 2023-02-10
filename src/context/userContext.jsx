@@ -7,6 +7,7 @@ export const UserContext = createContext()
 const UserProvider = ({ children }) => {
     
     const token = localStorage.getItem("@TOKEN")
+    const id = localStorage.getItem("@ID")
     const [user, setUser] = useState({})
     const [contacts, setContacts] = useState([])
     const navigate = useNavigate()
@@ -24,11 +25,12 @@ const UserProvider = ({ children }) => {
     }
 
     const onSubmitLogin = (data) => {
-        console.log(data)
         api.post("/login", data)
         .then((resp) => {
             console.log(resp)
             window.localStorage.setItem("@TOKEN", resp.data.token)
+            window.localStorage.setItem("@ID", resp.data.id)
+            setUser(data)
             navigate("/dashboard")
         })
         .catch((err) => {
@@ -41,13 +43,15 @@ const UserProvider = ({ children }) => {
         if (token) {
             try {
               api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-              const { data } = await api.get("/contact");
-              setContacts(data)
+              const { data } = await api.get(`/users/${id}`);
+              setContacts(data.contact)
+              console.log(data)
+              setUser(data)
       
             } catch (error) {
               console.log(error)
             }
-          }
+        }
     }
 
     const createContact = (data) => {
@@ -65,7 +69,11 @@ const UserProvider = ({ children }) => {
 
     useEffect(() => {
         getContacts()
-      }, [])
+    }, [token])
+    
+    useEffect(() => {
+        onSubmitLogin()
+    }, [])
 
     return(
         <UserContext.Provider value={{onSubmitLogin, onSubmitRegister, createContact, user, contacts}}>
